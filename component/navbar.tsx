@@ -16,7 +16,6 @@ import React from "react";
 
 const NavBar: NextPage = () => {
   const { colorMode, toggleColorMode } = useColorMode();
-  const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
 
   return (

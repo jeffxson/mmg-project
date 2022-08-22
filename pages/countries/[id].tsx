@@ -164,7 +164,7 @@ const CardView: NextPage = () => {
               {currentCountry &&
                 currentCountry.borders &&
                 currentCountry.borders.map((data: any) => (
-                  <Link href={`/countries/${data}`} passHref>
+                  <Link key={data} href={`/countries/${data}`} passHref>
                     <Button
                       color={useColorModeValue(
                         "lightMode.mainTextColor",
