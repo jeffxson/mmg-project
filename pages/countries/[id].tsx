@@ -17,6 +17,7 @@ import { useRouter } from "next/router";
 import axios from "axios";
 
 const CardView: NextPage = () => {
+  /* eslint-disable */
   const [country, setCountry] = useState<any[]>([]);
   const { colorMode, toggleColorMode } = useColorMode();
 
