@@ -98,7 +98,7 @@ const Home: NextPage = () => {
               md: "25px",
               lg: 0,
               xl: 0,
-              base: "",
+              base: "25px",
             }}
             px={4}
             height="45px"
