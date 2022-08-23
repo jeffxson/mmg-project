@@ -6,6 +6,7 @@ import {
   Heading,
   useColorModeValue,
   useColorMode,
+  Spinner,
 } from "@chakra-ui/react";
 import type { NextPage } from "next";
 import NavBar from "../../component/navbar";
@@ -21,14 +22,30 @@ const CardView: NextPage = () => {
   const [country, setCountry] = useState<any[]>([]);
   const { colorMode, toggleColorMode } = useColorMode();
 
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     const feachCountry = async () => {
+      setLoading(true);
       const countrydata = await axios.get(`https://restcountries.com/v2/all`);
       setCountry(countrydata.data);
+      setLoading(false);
     };
 
     feachCountry();
   }, []);
+  if (loading) {
+    return (
+      <Box width="10%" m="auto" mt="35vh">
+        <Spinner
+          thickness="10px"
+          speed="0.65s"
+          emptyColor="gray.200"
+          color="blue.500"
+          size="xl"
+        />
+      </Box>
+    );
+  }
 
   const router = useRouter();
   const { id } = router.query;
@@ -48,8 +65,6 @@ const CardView: NextPage = () => {
     currentCountry?.languages.map(function (element: { name: any }) {
       return `${element.name}, `;
     });
-
-  console.log(allLang);
 
   return (
     <Box>

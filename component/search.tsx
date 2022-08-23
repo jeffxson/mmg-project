@@ -60,7 +60,7 @@ const SearchBar: NextPage = () => {
           children={<SearchIcon color="gray.300" />}
         />
         <Input
-          type="tel"
+          type="text"
           w="350px"
           placeholder="Search for a country.... "
           onChange={handleFilter}
