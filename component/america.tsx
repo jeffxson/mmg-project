@@ -2,15 +2,11 @@ import { Box, SimpleGrid, Spinner } from "@chakra-ui/react";
 import type { NextPage } from "next";
 import Link from "next/link";
 import { Image } from "@chakra-ui/react";
-import { SetStateAction, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import Pagination from "./page";
 
-const Card: NextPage = () => {
+const America: NextPage = () => {
   const [country, setCountry] = useState<any[]>([]);
-
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(12);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     const feachCountry = async () => {
@@ -35,35 +31,30 @@ const Card: NextPage = () => {
       </Box>
     );
   }
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = country.slice(indexOfFirstPost, indexOfLastPost);
 
-  // Change page
-  const paginate = (pageNumber: SetStateAction<number>) =>
-    setCurrentPage(pageNumber);
+  const americalist =
+    country &&
+    country.filter((data: any) => {
+      return data.region === "Americas";
+    });
 
   return (
-    <Box>
-      <SimpleGrid
-        columns={{
-          sm: 1,
-          md: 2,
-          lg: 4,
-          xl: 4,
-          base: 1,
-        }}
-        spacing={10}
-        ml="70px"
-        mt="20px"
-      >
-        {currentPosts.map((data) => (
+    <SimpleGrid
+      columns={{
+        sm: 1,
+        md: 2,
+        lg: 4,
+        xl: 4,
+        base: 1,
+      }}
+      spacing={10}
+      ml="70px"
+      mt="40px"
+    >
+      {americalist &&
+        americalist.map((data) => (
           <Box key={data.alpha3Code}>
-            <Link
-              key={data.alpha3Code}
-              href={`/countries/${data.alpha3Code}`}
-              passHref
-            >
+            <Link href={`/countries/${data.alpha3Code}`} passHref>
               <Box
                 cursor="pointer"
                 width="230px"
@@ -108,15 +99,8 @@ const Card: NextPage = () => {
             </Link>
           </Box>
         ))}
-        <br></br>
-      </SimpleGrid>
-      <Pagination
-        postsPerPage={postsPerPage}
-        totalPosts={country.length}
-        paginate={paginate}
-      />
-    </Box>
+    </SimpleGrid>
   );
 };
 
-export default Card;
+export default America;
