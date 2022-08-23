@@ -103,7 +103,7 @@ const CardView: NextPage = () => {
             <Image
               boxShadow="rgba(0, 0, 0, 0.16) 0px 1px 4px"
               src={currentCountry && currentCountry.flag}
-              alt="Dan Abramov"
+              alt={currentCountry && currentCountry.name}
               width={{
                 sm: "90%",
                 md: "90%",
