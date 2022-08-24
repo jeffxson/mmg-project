@@ -47,9 +47,22 @@ const Oceania: NextPage = () => {
         xl: 4,
         base: 1,
       }}
-      spacing={10}
-      ml="70px"
-      mt="40px"
+      spacing={{
+        sm: 0,
+        md: 0,
+        lg: 10,
+        xl: 10,
+        base: 1,
+      }}
+      width="90"
+      ml={{
+        sm: "auto",
+        md: "70px",
+        lg: "70px",
+        xl: "70px",
+        base: "70px",
+      }}
+      mt="20px"
     >
       {oceanialist &&
         oceanialist.map((data) => (
