@@ -16,6 +16,11 @@ import React from "react";
 
 const NavBar: NextPage = () => {
   const { colorMode, toggleColorMode } = useColorMode();
+  console.log(colorMode);
+  const [text, setText] = useState("Dark");
+  const ChangeCollor = () => {
+    toggleColorMode();
+  };
   const btnRef = React.useRef();
 
   return (
@@ -43,9 +48,9 @@ const NavBar: NextPage = () => {
               "lightMode.mainTextColor",
               "darkMode.mainTextColor"
             )}
-            onClick={toggleColorMode}
+            onClick={ChangeCollor}
           >
-            <MoonIcon /> &nbsp; Dark Mode
+            <MoonIcon /> &nbsp; {colorMode} Mode
           </Button>
         </Flex>
       </Box>
